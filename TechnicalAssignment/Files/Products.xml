@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Products>
+  <Product id="1">
+    <ProductID>1</ProductID>
+    <Name>Xbox One</Name>
+    <Category>Electronics</Category>
+    <Description></Description>
+    <Price>699.99</Price>
+    <Quantity>28</Quantity>
+  </Product>
+</Products>
