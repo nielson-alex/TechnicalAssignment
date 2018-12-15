@@ -10,32 +10,37 @@ public partial class ViewProduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        populateForm();
+        string productID = Request.QueryString["id"];
+        XDocument doc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
+        // Get the product information by the product id
+        XElement product = doc.Element("Products").Elements("Product")
+            .Single(x => (string)x.Attribute("id") == Request.QueryString["id"]);
 
+        h1.InnerHtml = product.Element("Name").Value;
+        populateForm(product);
     }
 
-    protected void populateForm()
+    /**********************
+     * General Functions  *
+     *********************/
+    // Populate the form with the product's details
+    protected void populateForm(XElement product)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
         if (File.Exists(productsDoc))
         {
-            string thisThing = Request.QueryString["id"];
-            thisThing = thisThing.Replace("%20", " ");
-            XDocument doc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
-
-            // Get the product information by the product id
-            XElement elementToChange = doc.Element("Products").Elements("Product")
-                .Single(x => (string)x.Attribute("id") == Request.QueryString["id"]);
-
-            tbName.Text = elementToChange.Element("Name").Value;
-            tbCategory.Text = elementToChange.Element("Category").Value;
-            tbPrice.Text = elementToChange.Element("Price").Value;
-            tbQuantity.Text = elementToChange.Element("Quantity").Value;
+            tbName.Text = product.Element("Name").Value;
+            tbCategory.Text = product.Element("Category").Value;
+            tbPrice.Text = product.Element("Price").Value;
+            tbQuantity.Text = product.Element("Quantity").Value;
         }
     }
 
+    /**********************
+     * 1. btnBack         *
+     *********************/
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Catalog.aspx");
+        Response.Redirect("Default.aspx");
     }
 }

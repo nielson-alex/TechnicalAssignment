@@ -2,40 +2,75 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+    <link href="Files/Style.css" rel="stylesheet" />
+    <style>
+    </style>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+    <div class="Body">
+        <asp:Button ID="btnAddProduct" Text="Add New Product" OnClick="btnAddProduct_Click" runat="server" />
+        <asp:Label ID="lblCount" Text="" runat="server" />
+        <h1 class="centerText">Product Catalog</h1>
+        <asp:UpdatePanel ID="GridRefreshPanel" runat="server">
+            <ContentTemplate>
+                <asp:GridView ID="GridView1" OnRowDataBound="GridView1_RowDataBound"  AutoGenerateColumns="false" EmptyDataText="No products were found in this catalog" runat="server">
+                    <Columns>
+                        <asp:BoundField HeaderText="ID" DataField="ProductID" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderText="Product Name" DataField="Name" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderText="Category" DataField="Category" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderText="Description" DataField="Description" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderText="Price" DataField="Price" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderText="Quantity" DataField="Quantity" HeaderStyle-HorizontalAlign="Center" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnDetails" Text="View Details" CssClass="gvButton" OnClick="btnDetails_Click" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnEdit" Text="Edit" CssClass="gvButton" OnClick="btnEdit_Click" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnDelete" Text="Delete" CssClass="gvButton" OnClick="btnDelete_Click" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>  
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button_Search" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>      
+        <asp:Button ID="Button_Search" Style="display: none;" runat="server" />
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            window.setInterval(function () {
+                f2();
+            }, 5000);
+            f2();
+        });
+
+        function f2() {
+            __doPostBack('<%= Button_Search.ClientID %>', '');
+        }
+
+        function openDivConfirm() {
+            var divConfirm = document.getElementById("divConfirm");
+
+            if (divConfirm.style.display != "block") {
+                divConfirm.style.display = "block";
+            }
+        }
+
+        function closeDivConfirm() {
+            var divConfirm = document.getElementById("divConfirm");
+
+            if (divConfirm.style.display != "none") {
+                divConfirm.style.display = "none";
+            }
+        }
+    </script>
 </asp:Content>

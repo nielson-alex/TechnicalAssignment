@@ -10,32 +10,43 @@ public partial class EditProduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        XDocument doc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
+        // Get the product information by the product id
+        XElement product = doc.Element("Products").Elements("Product")
+            .Single(x => (string)x.Attribute("id") == Request.QueryString["id"]);
+
+        h1.InnerHtml = "Edit " + product.Element("Name");
+
         if (!IsPostBack)
         {
-            populateForm();
+            populateForm(product);
         }
     }
 
-    protected void populateForm()
+    // Populate the form with the product details
+    protected void populateForm(XElement product)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
         if (File.Exists(productsDoc))
         {
-            string thisThing = Request.QueryString["id"];
-            thisThing = thisThing.Replace("%20", " ");
-            XDocument doc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
-
-            // Get the product information by the product id
-            XElement elementToChange = doc.Element("Products").Elements("Product")
-                .Single(x => (string)x.Attribute("id") == Request.QueryString["id"]);
-
-            tbName.Text = elementToChange.Element("Name").Value;
-            tbCategory.Text = elementToChange.Element("Category").Value;
-            tbPrice.Text = elementToChange.Element("Price").Value;
-            tbQuantity.Text = elementToChange.Element("Quantity").Value;
+            tbName.Text = product.Element("Name").Value;
+            tbCategory.Text = product.Element("Category").Value;
+            tbPrice.Text = product.Element("Price").Value;
+            tbQuantity.Text = product.Element("Quantity").Value;
         }
     }
 
+    /**********************
+     * 1. btnBack         *
+     *********************/
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
+
+    /**********************
+     * 2. btnUpdate       *
+     *********************/
     protected void btnUpdate_Click(object sender, EventArgs e)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
@@ -46,19 +57,16 @@ public partial class EditProduct : System.Web.UI.Page
             XDocument doc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
 
             // Get the product information by the product id
-            XElement elementToChange = doc.Element("Products").Elements("Product")
+            XElement product = doc.Element("Products").Elements("Product")
                 .Single(x => (string)x.Attribute("id") == Request.QueryString["id"]);
 
-            XElement element2 = elementToChange.Element("Name");
-            elementToChange.SetElementValue("Name", tbName.Text);
+            XElement element2 = product.Element("Name");
+            product.SetElementValue("Name", tbName.Text);
             
             doc.Save(Server.MapPath("/Files/Products.xml"));
-            populateForm();
-        }
-    }
+            populateForm(product);
 
-    protected void btnBack_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Catalog.aspx");
+            h1.InnerHtml = "Edit " + product.Element("Name");
+        }
     }
 }

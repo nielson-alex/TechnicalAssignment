@@ -1,19 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Products>
-  <Product id="1">
-    <ProductID>1</ProductID>
-    <Name>Xbox One</Name>
-    <Category>Electronics</Category>
-    <Description></Description>
-    <Price>699.99</Price>
-    <Quantity>28</Quantity>
-  </Product>
   <Product id="2">
     <ProductID>2</ProductID>
-    <Name>Nintendo Switch</Name>
+    <Name>Nintendo Switches</Name>
     <Category>Electronics</Category>
     <Description></Description>
     <Price>499.99</Price>
     <Quantity>250</Quantity>
+  </Product>
+  <Product id="3">
+    <ProductID>3</ProductID>
+    <Name>PlayStation 4</Name>
+    <Category>Electronics</Category>
+    <Description>Game console</Description>
+    <Price>699.99</Price>
+    <Quantity>150</Quantity>
+  </Product>
+  <Product id="4">
+    <ProductID>4</ProductID>
+    <Name>The Hunger Games</Name>
+    <Category>Books</Category>
+    <Description>First book in the Hunger Games trilogy</Description>
+    <Price>14.99</Price>
+    <Quantity>200</Quantity>
+  </Product>
+  <Product id="5">
+    <ProductID>5</ProductID>
+    <Name>Catching Fire</Name>
+    <Category>Books</Category>
+    <Description>Second book in the Hunger Games trilogy</Description>
+    <Price>12.99</Price>
+    <Quantity>225</Quantity>
+  </Product>
+  <Product id="6">
+    <ProductID>6</ProductID>
+    <Name>Mockingjay</Name>
+    <Category>Books</Category>
+    <Description>Third book in the Hunger Games trilogy</Description>
+    <Price>13.99</Price>
+    <Quantity>180</Quantity>
+  </Product>
+  <Product id="7">
+    <ProductID>7</ProductID>
+    <Name>Ender's Game</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>12.99</Price>
+    <Quantity>250</Quantity>
+  </Product>
+  <Product id="8">
+    <ProductID>8</ProductID>
+    <Name>Speaker for the Dead</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>12.99</Price>
+    <Quantity>250</Quantity>
+  </Product>
+  <Product id="9">
+    <ProductID>9</ProductID>
+    <Name>Xenocide</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>10.99</Price>
+    <Quantity>150</Quantity>
+  </Product>
+  <Product id="10">
+    <ProductID>10</ProductID>
+    <Name>Children of the Mind</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>10.99</Price>
+    <Quantity>150</Quantity>
+  </Product>
+  <Product id="11">
+    <ProductID>11</ProductID>
+    <Name>Jurassic Park</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>9.99</Price>
+    <Quantity>20</Quantity>
+  </Product>
+  <Product id="12">
+    <ProductID>12</ProductID>
+    <Name>Jurassic Park: The Lost World</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>4.99</Price>
+    <Quantity>150</Quantity>
   </Product>
 </Products>
