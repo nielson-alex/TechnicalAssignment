@@ -33,4 +33,9 @@ public partial class ViewProduct : System.Web.UI.Page
             tbQuantity.Text = elementToChange.Element("Quantity").Value;
         }
     }
+
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Catalog.aspx");
+    }
 }

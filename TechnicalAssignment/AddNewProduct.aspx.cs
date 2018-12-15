@@ -182,6 +182,6 @@ public partial class AddNewProduct : System.Web.UI.Page
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Default.aspx");
+        Response.Redirect("Catalog.aspx");
     }
 }

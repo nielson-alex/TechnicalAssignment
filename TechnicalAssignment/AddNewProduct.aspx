@@ -1,18 +1,48 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="AddNewProduct.aspx.cs" Inherits="AddNewProduct" %>
+﻿<%@ Page Title="Add Product" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="AddNewProduct.aspx.cs" Inherits="AddNewProduct" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        
+        .Body {
+            box-shadow: 0px 0px 5px #000000;
+            margin: 3% auto 0 auto;
+            padding: 2%;
+            width: 80%;
+        }
+
+        .centerText {
+            text-align: center;
+        }
+
+        hr {
+            border-bottom: 1px dotted #000000;
+        }
+
+        #MainContent_btnBack {
+            float: right;
+        }
+        #MainContent_lblDescription {
+            vertical-align: top;
+        }
+
+        .input {
+            display: inline-block;
+            font-size: 16px;
+            margin: 0 0 2% 0;
+            width: 75%;
+        }
     </style>
 
     <div class="Body">
         <asp:Button ID="btnBack" Text="Back" OnClick="btnBack_Click" CausesValidation="false" runat="server" />
-        <asp:Label Text="Product Name:" runat="server" />
-        <asp:TextBox ID="tbName" Text="" runat="server" />
+        <br />
+        <h1 class="centerText">Add New Product to Catalog</h1>
+        <hr />
+        <asp:Label Text="Product Name:" Font-Bold="true" Width="20%" runat="server" />
+        <asp:TextBox ID="tbName" Text="" CssClass="input" runat="server" />
         <asp:RequiredFieldValidator ControlToValidate="tbName" ErrorMessage="Product name is required" ForeColor="Red" runat="server" />
         <br />
-        <asp:Label Text="Category:" runat="server" />
-        <asp:DropDownList ID="ddlCategory" runat="server">
+        <asp:Label Text="Category:" Font-Bold="true" Width="20%" runat="server" />
+        <asp:DropDownList ID="ddlCategory" CssClass="input" runat="server">
             <asp:ListItem />
             <asp:ListItem Text="Apparel" Value="Apparel" />
             <asp:ListItem Text="Books" Value="Books" />
@@ -21,15 +51,15 @@
         </asp:DropDownList>
         <asp:RequiredFieldValidator ControlToValidate="ddlCategory" ErrorMessage="Category is required" ForeColor="Red" runat="server" />
         <br />
-        <asp:Label Text="Description" runat="server" />
-        <asp:TextBox ID="tbDescription" Text="" TextMode="MultiLine" Style="resize: none;" runat="server" />
+        <asp:Label ID="lblDescription" Text="Description:" Font-Bold="true" Width="20%" runat="server" />
+        <asp:TextBox ID="tbDescription" Text="" CssClass="input" TextMode="MultiLine" Style="resize: none;" runat="server" />
         <br />
-        <asp:Label Text="Price:" runat="server" />
-        $<asp:TextBox ID="tbPrice" Text="" runat="server" />
+        <asp:Label Text="Price (USD):" Font-Bold="true" Width="20%" runat="server" />
+        <asp:TextBox ID="tbPrice" Text="" CssClass="input" runat="server" />
         <asp:RequiredFieldValidator ControlToValidate="tbPrice" ErrorMessage="Price is required" ForeColor="Red" runat="server" />
         <br />
-        <asp:Label ID="lblQuantity" Text="Quantity:" runat="server" />
-        <asp:TextBox ID="tbQuantity" Text="" TextMode="Number" runat="server" />
+        <asp:Label ID="lblQuantity" Font-Bold="true" Width="20%" Text="Quantity:" runat="server" />
+        <asp:TextBox ID="tbQuantity" Text="" CssClass="input" TextMode="Number" runat="server" />
         <asp:RequiredFieldValidator ControlToValidate="tbQuantity" ErrorMessage="Quantity is required and must be greater than 0" ForeColor="Red" runat="server" />
 
         <div id="divConfirm" style="display: none;">
@@ -37,15 +67,7 @@
             <input type="button" id="btnNo" value="No" onclick="closeDivConfirm()" />
             <asp:Button ID="btnYes" Text="Yes" OnClick="btnSave_Click1" runat="server" />
         </div>
-        <%--<br />
-        <asp:Label Text="City:" runat="server" />
-        <asp:TextBox ID="tbCity" Text="" runat="server" />
         <br />
-        <asp:Label Text="State:" runat="server" />
-        <asp:TextBox ID="tbState" Text="" runat="server" />
-        <br />
-        <asp:Label Text="Zip Code:" runat="server" />
-        <asp:TextBox ID="tbZip" Text="" runat="server" />--%>
 
         <input type="button" id="btnSave" value="Save" onclick="openDivConfirm()" />
         <asp:Label ID="lblError" Text="" ForeColor="Red" runat="server" />

@@ -56,4 +56,9 @@ public partial class EditProduct : System.Web.UI.Page
             populateForm();
         }
     }
+
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Catalog.aspx");
+    }
 }

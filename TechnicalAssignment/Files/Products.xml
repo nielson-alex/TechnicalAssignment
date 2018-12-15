@@ -8,4 +8,12 @@
     <Price>699.99</Price>
     <Quantity>28</Quantity>
   </Product>
+  <Product id="2">
+    <ProductID>2</ProductID>
+    <Name>Nintendo Switch</Name>
+    <Category>Electronics</Category>
+    <Description></Description>
+    <Price>499.99</Price>
+    <Quantity>250</Quantity>
+  </Product>
 </Products>

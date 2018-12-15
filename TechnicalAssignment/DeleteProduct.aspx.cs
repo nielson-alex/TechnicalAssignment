@@ -36,7 +36,7 @@ public partial class DeleteProduct : System.Web.UI.Page
         }
     }
 
-    protected void btnUpdate_Click(object sender, EventArgs e)
+    protected void btnDelete_Click(object sender, EventArgs e)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
         if (File.Exists(productsDoc))
@@ -54,5 +54,10 @@ public partial class DeleteProduct : System.Web.UI.Page
             doc.Save(Server.MapPath("/Files/Products.xml"));
             Response.Redirect("Catalog.aspx");
         }
+    }
+
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Catalog.aspx");
     }
 }
