@@ -6,7 +6,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-public partial class DeleteProduct : System.Web.UI.Page
+public partial class Delete : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -24,6 +24,7 @@ public partial class DeleteProduct : System.Web.UI.Page
         }
     }
 
+    // Populate the form with the product's details
     protected void populateForm(XElement product)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
@@ -41,7 +42,7 @@ public partial class DeleteProduct : System.Web.UI.Page
      *********************/
     protected void btnBack_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Catalog.aspx");
+        Response.Redirect("Default.aspx");
     }
 
     /**********************
@@ -63,7 +64,7 @@ public partial class DeleteProduct : System.Web.UI.Page
             elementToChange.Remove();
             
             doc.Save(Server.MapPath("/Files/Products.xml"));
-            Response.Redirect("Catalog.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 }

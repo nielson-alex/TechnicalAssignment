@@ -6,7 +6,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-public partial class ViewProduct : System.Web.UI.Page
+public partial class View : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,9 +20,6 @@ public partial class ViewProduct : System.Web.UI.Page
         populateForm(product);
     }
 
-    /**********************
-     * General Functions  *
-     *********************/
     // Populate the form with the product's details
     protected void populateForm(XElement product)
     {

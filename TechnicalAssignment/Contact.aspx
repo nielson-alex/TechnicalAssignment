@@ -1,17 +1,19 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
-    <h3>Your contact page.</h3>
+    <link href="Files/Style.css" rel="stylesheet" />
+    <h2><%: Title %></h2>
+    <hr />
+    <h3>Alex Nielson</h3>
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
+        1303 S. Slate Canyon Drive<br />
+        Provo, UT<br />
+        84606<br />
     </address>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        <strong>Mobile: </strong><a>(385-221-2009)</a><br />
+        <strong>Email: </strong><a href="mailto:agnielson@outlook.com">agnielson@outlook.com</a><br />
+        <strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/alex-nielson-6aa9995b/">Alex Nielson</a>
     </address>
 </asp:Content>

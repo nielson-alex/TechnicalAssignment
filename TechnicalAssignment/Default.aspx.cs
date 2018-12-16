@@ -13,9 +13,6 @@ public partial class _Default : Page
         populateGV();
     }
 
-    /**********************
-     * General Functions  *
-     *********************/
     // Populate the gridview with the product catalog info
     protected void populateGV()
     {
@@ -59,11 +56,11 @@ public partial class _Default : Page
     }
 
     /**********************
-     * 1. btnAddProduct   *
+     * 1. btnAdd          *
      *********************/
-    protected void btnAddProduct_Click(object sender, EventArgs e)
+    protected void btnAdd_Click(object sender, EventArgs e)
     {
-        Response.Redirect("AddNewProduct.aspx");
+        Response.Redirect("Add.aspx");
     }
 
     /**********************
@@ -74,7 +71,7 @@ public partial class _Default : Page
         Button btn = (Button)sender;
         GridViewRow gvRow = (GridViewRow)btn.Parent.Parent;
         string id = gvRow.Cells[0].Text;
-        Response.Redirect("ViewProduct.aspx?id=" + id);
+        Response.Redirect("View.aspx?id=" + id);
     }
 
     /**********************
@@ -85,7 +82,7 @@ public partial class _Default : Page
         Button btn = (Button)sender;
         GridViewRow gvRow = (GridViewRow)btn.Parent.Parent;
         string id = gvRow.Cells[0].Text;
-        Response.Redirect("EditProduct.aspx?id=" + id);
+        Response.Redirect("Edit.aspx?id=" + id);
     }
 
     /**********************
@@ -96,6 +93,6 @@ public partial class _Default : Page
         Button btn = (Button)sender;
         GridViewRow gvRow = (GridViewRow)btn.Parent.Parent;
         string id = gvRow.Cells[0].Text;
-        Response.Redirect("DeleteProduct.aspx?id=" + id);
+        Response.Redirect("Delete.aspx?id=" + id);
     }
 }

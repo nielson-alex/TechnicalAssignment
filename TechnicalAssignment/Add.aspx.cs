@@ -6,49 +6,31 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 
-public partial class AddNewProduct : System.Web.UI.Page
+public partial class Add : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string productsDoc = Server.MapPath("/Files/Products.xml");
-
-        if (File.Exists(productsDoc))
+        if (IsPostBack)
         {
-            XDocument contactDoc = XDocument.Load(Server.MapPath("/Files/Products.xml"));
-            //open the tender xml file  
-            //XmlTextReader xmlreader = new XmlTextReader(Server.MapPath("C:/Users/alexn/Desktop/For Alex/Files/contacts.xml"));
-            XmlTextReader xmlreader = new XmlTextReader(Server.MapPath("/Files/Products.xml"));
-
-            //reading the xml data  
-            DataSet ds = new DataSet();
-            ds.ReadXml(xmlreader);
-            xmlreader.Close();
-
-            //if ds is not empty  
-            if (ds.Tables.Count != 0)
+            if (lblError.Text != string.Empty)
             {
-                //Bind Data to gridview  
-                //GridView1.DataSource = ds;
-                //GridView1.DataBind();
-
-                // Bind Data to dropdownlist  
-                //DropDownList1BillNo.DataSource = ds;
-                //DropDownList1BillNo.DataTextField = "BillNo";
-                //DropDownList1BillNo.DataValueField = "BillNo";
-                //DropDownList1BillNo.DataBind();
-                //DropDownList2PageNo.DataSource = ds;
-                //DropDownList2PageNo.DataTextField = "PageNo";
-                //DropDownList2PageNo.DataValueField = "PageNo";
-                //DropDownList2PageNo.DataBind();
-                //DropDownList3Activity.DataSource = ds;
-                //DropDownList3Activity.DataTextField = "Name";
-                //DropDownList3Activity.DataValueField = "Name";
-                //DropDownList3Activity.DataBind();
+                lblError.Text = string.Empty;
             }
         }
     }
 
-    protected void btnSave_Click1(object sender, EventArgs e)
+    /**********************
+     * 1. btnBack         *
+     *********************/
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
+
+    /**********************
+     * 2. btnYes          *
+     *********************/
+    protected void btnYes_Click(object sender, EventArgs e)
     {
         string productsDoc = Server.MapPath("/Files/Products.xml");
         if (tbName.Text == string.Empty || ddlCategory.SelectedValue == null || tbPrice.Text == string.Empty || tbQuantity.Text == string.Empty)
@@ -58,10 +40,6 @@ public partial class AddNewProduct : System.Web.UI.Page
         else if (File.Exists(productsDoc) && alreadyExists(tbName.Text))
         {
             lblError.Text = "This product already exists";
-        }
-        else if (!(isDouble(tbPrice.Text)))
-        {
-            lblError.Text = "Price format is wrong";
         }
         else if (!(isPositive(tbQuantity.Text)))
         {
@@ -84,6 +62,12 @@ public partial class AddNewProduct : System.Web.UI.Page
                 //reading the xml data  
                 xmlreader.Close();
 
+                string price = "";
+                if (!(tbPrice.Text.Contains(".")))
+                {
+                    price = "$" + tbPrice.Text + ".00";
+                }
+
                 XElement root = doc.Element("Products");
                 IEnumerable<XElement> rows = root.Descendants("Product");
                 XElement lastRow = rows.Last();
@@ -94,7 +78,7 @@ public partial class AddNewProduct : System.Web.UI.Page
                         new XElement("Name", tbName.Text),
                         new XElement("Category", ddlCategory.SelectedValue),
                         new XElement("Description", tbDescription.Text),
-                        new XElement("Price", tbPrice.Text),
+                        new XElement("Price", price),
                         new XElement("Quantity", tbQuantity.Text)
                     )
                 );
@@ -118,6 +102,7 @@ public partial class AddNewProduct : System.Web.UI.Page
 
                 products.Save(Server.MapPath("/Files/Products.xml"));
             }
+            Response.Redirect("Default.aspx");
         }
     }
 
@@ -138,22 +123,6 @@ public partial class AddNewProduct : System.Web.UI.Page
         return alreadyExists;
     }
 
-    // Check to see if tbPrice.Text is a valid number with two decimals
-    protected bool isDouble(string price)
-    {
-        bool isDouble = false;
-        try
-        {
-            Convert.ToDouble(price);
-            isDouble = true;
-        }
-        catch
-        {
-            isDouble = false;
-        }
-        return isDouble;
-    }
-
     // Check to see if tbQuantity.Text is a valid integer
     protected bool isPositive(string quantity)
     {
@@ -165,6 +134,7 @@ public partial class AddNewProduct : System.Web.UI.Page
         return isPositive;
     }
 
+    // Check to see that the number provided is an int
     protected bool isInt(string productID)
     {
         bool isInt = false;
@@ -178,10 +148,5 @@ public partial class AddNewProduct : System.Web.UI.Page
 
         }
         return isInt;
-    }
-
-    protected void btnBack_Click(object sender, EventArgs e)
-    {
-        Response.Redirect("Default.aspx");
     }
 }

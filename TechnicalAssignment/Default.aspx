@@ -7,7 +7,7 @@
     </style>
 
     <div class="Body">
-        <asp:Button ID="btnAddProduct" Text="Add New Product" OnClick="btnAddProduct_Click" runat="server" />
+        <asp:Button ID="btnAdd" Text="Add New Product" OnClick="btnAdd_Click" runat="server" />
         <asp:Label ID="lblCount" Text="" runat="server" />
         <h1 class="centerText">Product Catalog</h1>
         <asp:UpdatePanel ID="GridRefreshPanel" runat="server">

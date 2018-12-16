@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Product" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="AddNewProduct.aspx.cs" Inherits="AddNewProduct" %>
+﻿<%@ Page Title="Add Product" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Add.aspx.cs" Inherits="Add" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <link href="Files/Style.css" rel="stylesheet" />
@@ -17,10 +17,13 @@
         <asp:Label Text="Category:" Font-Bold="true" Width="20%" runat="server" />
         <asp:DropDownList ID="ddlCategory" CssClass="input" runat="server">
             <asp:ListItem />
-            <asp:ListItem Text="Apparel" Value="Apparel" />
             <asp:ListItem Text="Books" Value="Books" />
+            <asp:ListItem Text="Clothing" Value="Clothing" />
             <asp:ListItem Text="Electronics" Value="Electronics" />
             <asp:ListItem Text="Home & Office" Value="Home & Office" />
+            <asp:ListItem Text="Sports" Value="Sports" />
+            <asp:ListItem Text="Video Games" Value="Video Games" />
+            <asp:ListItem Text="Other" Value="Other" />
         </asp:DropDownList>
         <asp:RequiredFieldValidator ControlToValidate="ddlCategory" ErrorMessage="Category is required" ForeColor="Red" runat="server" />
         <br />
@@ -36,9 +39,9 @@
         <asp:RequiredFieldValidator ControlToValidate="tbQuantity" ErrorMessage="Quantity is required and must be greater than 0" ForeColor="Red" runat="server" />
 
         <div id="divConfirm" style="display: none;">
-            <asp:Label Text="Does this look right?" runat="server" />
+            <asp:Label Text="Is this information correct?" runat="server" />
             <input type="button" id="btnNo" value="No" onclick="closeDivConfirm()" />
-            <asp:Button ID="btnYes" Text="Yes" OnClick="btnSave_Click1" runat="server" />
+            <asp:Button ID="btnYes" Text="Yes" OnClick="btnYes_Click" runat="server" />
         </div>
         <br />
 

@@ -2,10 +2,10 @@
 <Products>
   <Product id="2">
     <ProductID>2</ProductID>
-    <Name>Nintendo Switches</Name>
+    <Name>Nintendo Switch</Name>
     <Category>Electronics</Category>
     <Description></Description>
-    <Price>499.99</Price>
+    <Price></Price>
     <Quantity>250</Quantity>
   </Product>
   <Product id="3">
@@ -21,8 +21,8 @@
     <Name>The Hunger Games</Name>
     <Category>Books</Category>
     <Description>First book in the Hunger Games trilogy</Description>
-    <Price>14.99</Price>
-    <Quantity>200</Quantity>
+    <Price>11</Price>
+    <Quantity>10</Quantity>
   </Product>
   <Product id="5">
     <ProductID>5</ProductID>
@@ -82,10 +82,42 @@
   </Product>
   <Product id="12">
     <ProductID>12</ProductID>
-    <Name>Jurassic Park: The Lost World</Name>
+    <Name>Pirate Latitudes</Name>
     <Category>Books</Category>
     <Description></Description>
-    <Price>4.99</Price>
-    <Quantity>150</Quantity>
+    <Price>1</Price>
+    <Quantity>1</Quantity>
+  </Product>
+  <Product id="13">
+    <ProductID>13</ProductID>
+    <Name>Pirate Latitudess</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>1</Price>
+    <Quantity>4</Quantity>
+  </Product>
+  <Product id="14">
+    <ProductID>14</ProductID>
+    <Name>Pirabe Labibubes</Name>
+    <Category>Books</Category>
+    <Description></Description>
+    <Price>$82.00</Price>
+    <Quantity>7</Quantity>
+  </Product>
+  <Product id="15">
+    <ProductID>15</ProductID>
+    <Name>Playstation 2</Name>
+    <Category>Electronics</Category>
+    <Description></Description>
+    <Price>10.00</Price>
+    <Quantity>1</Quantity>
+  </Product>
+  <Product id="16">
+    <ProductID>16</ProductID>
+    <Name>Xbox 360</Name>
+    <Category>Electronics</Category>
+    <Description></Description>
+    <Price>$100.00</Price>
+    <Quantity>25</Quantity>
   </Product>
 </Products>
